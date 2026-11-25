@@ -1,0 +1,1 @@
+import{d as c,J as _,K as i,o as m,c as p,a as n,j as o,L as d,B as l,M as f}from"./CXrGwGjy.js";const u={id:"main"},$=c({__name:"default",setup(B){const{init:s}=_();return i(s),(t,e)=>{const a=d,r=f;return m(),p("div",null,[e[0]||(e[0]=n("a",{href:"#main",class:"sr-only"},"Skip to content",-1)),o(a),n("main",u,[l(t.$slots,"default")]),o(r)])}}});export{$ as default};

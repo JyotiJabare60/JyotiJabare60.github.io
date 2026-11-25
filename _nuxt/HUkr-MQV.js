@@ -1,0 +1,1 @@
+import{A as o,o as s,c as t,a as c,B as n}from"./CXrGwGjy.js";const a={},r={class:"callout"};function _(e,l){return s(),t("div",r,[c("p",null,[n(e.$slots,"default")])])}const f=o(a,[["render",_]]);export{f as _};
