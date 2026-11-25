@@ -1,0 +1,1061 @@
+{
+  "projects": [
+    {
+      "slug": "agentmate-crm-mobile",
+      "name": "AgentMate CRM Mobile",
+      "cardTitle": "Real-estate CRM, mobile",
+      "categories": [
+        "flutter",
+        "ai"
+      ],
+      "categoryLabel": "Flutter · AI",
+      "status": "production",
+      "statusLabel": "Production · enterprise release",
+      "contribution": "224 / 286 commits",
+      "role": "Primary author",
+      "period": "Jun 2025 – Aug 2026",
+      "scale": "~92,000 lines · 189 Dart files",
+      "employer": "NU App Solutions",
+      "featured": true,
+      "order": 1,
+      "summary": "A ~92,000-line Flutter client I created and authored — 182 of 189 Dart files, 20 Provider modules. Offline business-card capture on Hive, conversation transcription with AI-extracted action items, and spoken appointment reminders written in native Kotlin and Swift.",
+      "tags": [
+        "Flutter",
+        "Hive",
+        "OpenAI",
+        "Platform channels"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "AgentMate CRM Mobile",
+        "plateStack": [
+          "Flutter",
+          "Provider",
+          "Kotlin",
+          "Swift"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "The Flutter client for a multi-tenant real-estate CRM. I created the repository and wrote 182 of its 189 Dart files.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "About 92,000 lines organised as one Provider module per feature — contacts, deals, tasks, calendar, expenses, banking, conversations and chat — all scoped to a selected workspace. Every module talks to a workspace-prefixed REST API through a single HTTP client handling tokens, timeouts and multipart uploads."
+          ]
+        },
+        {
+          "heading": "The business problem",
+          "body": [
+            "Agents work from their phones between showings. A CRM that only works at a desk collects nothing: business cards go uncaptured, conversations go unlogged, and follow-ups are missed. The app had to keep working with no signal and reconcile cleanly when it returned."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "Google sign-in plus a server-auth-code flow so the backend can hold a refresh token for Contacts and Calendar, with disconnect and reconnect handled through record parking.",
+            "An offline business-card queue on Hive with retry counts, syncing when connectivity returns.",
+            "Conversation capture: AAC recording, upload, transcription polling, and playback with a synced transcript and editable AI-extracted action items.",
+            "Spoken appointment reminders in native code — Kotlin exact alarms with a text-to-speech foreground service and boot receiver, Swift notification triggers and speech synthesis — over one shared MethodChannel contract.",
+            "A documented 20-bug hardening sweep and around ten signed releases with R8 minification."
+          ]
+        },
+        {
+          "heading": "Architecture",
+          "body": [
+            "Provider / ChangeNotifier at scale: 20 feature modules with workspace-scoped cache clearing and disposed-notifier guards, singleton services exposing broadcast streams, and a single HTTP client with central 401 handling."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Google Contacts and Calendar need server-side refresh tokens, not the mobile access token — solved with a server-auth-code exchange.",
+            "Offline capture must not duplicate on resync — retry-counted Hive queue entries with server-side reconciliation.",
+            "Native reminders had to behave identically on both platforms — one channel contract, two implementations, payloads passed through shared preferences."
+          ]
+        }
+      ],
+      "outcomes": [
+        "Primary author: 224 of 286 commits and 182 of 189 Dart files.",
+        "20 feature modules in production use.",
+        "Around ten signed releases with R8 minification and a documented 20-bug hardening sweep."
+      ],
+      "outcomeNote": "Usage figures are not published here — nothing on this site is an estimate.",
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "Provider",
+        "Hive",
+        "Kotlin",
+        "Swift",
+        "Firebase",
+        "OpenAI API"
+      ],
+      "platforms": "Android · iOS",
+      "gallery": [],
+      "galleryNote": null
+    },
+    {
+      "slug": "enserviceportal",
+      "name": "EnServicePortal",
+      "cardTitle": "Offline-first construction defect app",
+      "categories": [
+        "fullstack"
+      ],
+      "categoryLabel": "Full-stack",
+      "status": "production",
+      "statusLabel": "Production · internal",
+      "contribution": "170 / 179 commits (95%)",
+      "role": "Effectively solo",
+      "period": "Jul 2023 – Jun 2025",
+      "scale": "~22,300 lines · 24 modules",
+      "employer": "NU App Solutions",
+      "featured": true,
+      "order": 2,
+      "summary": "Site staff record build defects in concrete shells with no network. I wrote almost all of it, including a 2,127-line PouchDB layer that stores everything locally and syncs on reconnect, and fabric.js annotation over floor plans. One codebase ships to Android, iOS and web.",
+      "tags": [
+        "Angular",
+        "PouchDB",
+        "fabric.js",
+        "Capacitor"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "EnServicePortal",
+        "plateStack": [
+          "Angular",
+          "Ionic",
+          "Capacitor",
+          "PouchDB"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "An offline-first Angular, Ionic and Capacitor application used on construction sites. I wrote 170 of its 179 commits.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "Site staff open a suite, mark deficiencies on floor-plan layouts and photographs, annotate the photographs, run checklist inspections, record colour selections and suite customisations, watch construction status and generate reports — all of it working offline and syncing when connectivity returns."
+          ]
+        },
+        {
+          "heading": "The business problem",
+          "body": [
+            "Deficiency walk-throughs happen in concrete shells with no Wi-Fi and unreliable mobile data, and the output — what is wrong, where, with photographic proof, assigned to which trade — is the legal and financial record for handover. Paper lists and camera rolls lose location context and cannot be reconciled afterwards."
+          ]
+        },
+        {
+          "heading": "The solution",
+          "body": [
+            "Local-first storage, not a sync afterthought. A 2,127-line PouchDB layer holds projects, suites, deficiencies, checklists and media as local documents; every write lands locally first and reconciles on reconnect, so a walk-through completes with no signal and nothing is lost if the app is killed."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "The offline data layer — the PouchDB service, its document model and the reconnect sync.",
+            "Deficiency capture and resolution across three screens totalling ~8,600 lines: create, categorise, locate, assign, comment on and close defects, with per-suite and per-project rollups.",
+            "Photo and floor-plan annotation on a fabric.js canvas, with pinned locations editable after the fact.",
+            "Checklist inspections — templated runs with pass/fail items, notes, photographs and signature capture.",
+            "Construction dashboards, charted reports with CSV export, a PDF document viewer and change history.",
+            "Native packaging: Capacitor camera, filesystem, network-state and voice recording across Android and iOS."
+          ]
+        },
+        {
+          "heading": "Architecture",
+          "body": [
+            "Angular with Ionic components and Capacitor for native packaging. Pages under one feature folder, and three services: a REST client, a shared cross-page state service, and the PouchDB offline layer that is the heart of the application."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "No connectivity on site — PouchDB local-first writes with reconnect sync, the pattern I later carried into Flutter with Hive and SQLite.",
+            "Defects need a location, not just a description — canvas annotation over floor plans with editable pins.",
+            "Very large screens: the largest page reached 3,410 lines under delivery pressure. The honest answer is that I would split it by concern and move state out of the page.",
+            "One codebase, two stores and the web — Ionic components with Capacitor native plugins over a single Angular application."
+          ]
+        }
+      ],
+      "outcomes": [
+        "170 of 179 commits over two years of continuous delivery.",
+        "~22,300 lines of TypeScript across 24 page modules.",
+        "Offline capability, plus Android, iOS and web builds from one codebase."
+      ],
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Angular",
+        "Ionic",
+        "Capacitor",
+        "PouchDB",
+        "fabric.js",
+        "signature_pad",
+        "chart.js",
+        "PrimeNG"
+      ],
+      "platforms": "Android · iOS · Web",
+      "gallery": [],
+      "galleryNote": null,
+      "outcomeNote": null
+    },
+    {
+      "slug": "atm-crm",
+      "name": "ATM-CRM",
+      "cardTitle": "Workspace-scoped CRM platform",
+      "categories": [
+        "fullstack",
+        "ai"
+      ],
+      "categoryLabel": "Full-stack · AI",
+      "status": "production",
+      "statusLabel": "Production · internal",
+      "contribution": "379 / 616 commits",
+      "role": "Primary author",
+      "period": "Sep 2025 – Sep 2026",
+      "scale": "337 Vue components + Express API",
+      "employer": "NU App Solutions",
+      "featured": true,
+      "order": 3,
+      "summary": "Contacts, deals and commissions, Gmail inbox, calendar and tasks, expenses and banking. I worked both sides and owned the integrations: Google OAuth with two-way Calendar and Tasks sync, OpenAI extraction from receipts and bank statements, and fuzzy transaction matching.",
+      "tags": [
+        "Vue 3",
+        "Node.js",
+        "MongoDB",
+        "Google APIs"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "ATM-CRM",
+        "plateStack": [
+          "Vue 3",
+          "Express",
+          "MongoDB",
+          "OpenAI"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "A workspace-scoped CRM for real-estate agents, built as a monorepo: Vue 3 client, Express and MongoDB server.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "Contacts, deals and commissions, a Gmail inbox, calendar and tasks, expenses, banking, documents, mileage, newsletters and AI assistance — every record scoped to a workspace, with role-based access throughout."
+          ]
+        },
+        {
+          "heading": "The business problem",
+          "body": [
+            "Agents run their business across a mailbox, a calendar, a spreadsheet of commissions and a shoebox of receipts. The value is not another database — it is pulling those sources together without the agent re-typing anything, and without the sync silently corrupting their calendar."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "Google OAuth 2.0 code flow with per-workspace token storage, refresh handling and incremental scopes.",
+            "Two-way Calendar and Tasks sync with conflict-safe upserts, and disconnect/reconnect record parking so nothing is orphaned.",
+            "OpenAI-powered extraction: JSON-mode structured output from emails, vision OCR for receipts and business cards, and PDF bank statements parsed through the Files API — each with duplicate detection and user confirmation before any record is written.",
+            "Fuzzy matching of imported bank transactions against recorded expenses.",
+            "Server-side pagination, filter and sort contracts shared across modules."
+          ]
+        },
+        {
+          "heading": "Architecture",
+          "body": [
+            "A monorepo with a Vite-built Vue 3 client and an Express server on MongoDB. Workspace-prefixed routes, merged-param nested routers, a consistent response envelope, and two-layer JWT sessions with revocation."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Calendar sync that cannot duplicate or delete a user's events — conflict-safe upserts keyed on external identifiers, with parking for records whose link is broken.",
+            "LLM output is not trustworthy by default — JSON mode, schema validation, duplicate detection and an explicit confirmation step before writing.",
+            "Long-running AI requests must be cancellable — AbortController threaded end to end."
+          ]
+        }
+      ],
+      "outcomes": [
+        "379 of 616 commits — primary author across client and server.",
+        "Google Workspace, OpenAI and banking integrations in production use.",
+        "Documented architecture and sync design carried into sibling services."
+      ],
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Vue 3",
+        "Vite",
+        "Vuex",
+        "TypeScript",
+        "Tailwind",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "OpenAI API",
+        "Google APIs"
+      ],
+      "platforms": "Web",
+      "gallery": [],
+      "galleryNote": null,
+      "outcomeNote": null
+    },
+    {
+      "slug": "homefoody",
+      "name": "HomeFoody",
+      "cardTitle": "HomeFoody — two published apps",
+      "categories": [
+        "flutter"
+      ],
+      "categoryLabel": "Flutter",
+      "status": "published",
+      "statusLabel": "Published · Google Play & App Store",
+      "contribution": "116/132 · 73/86 commits",
+      "role": "Sole mobile developer",
+      "period": "Apr – Sep 2024",
+      "scale": "~36,200 lines · 117 Dart files",
+      "employer": "NU App Solutions · client: Cybertree",
+      "featured": true,
+      "order": 4,
+      "summary": "A home-food marketplace for an Australian client, Cybertree. I was the only mobile developer on both apps: supplier onboarding, a date-and-time-slot availability calendar, menus and promotions; and on the buyer side, OTP sign-in, discovery and a cart grouped by supplier.",
+      "tags": [
+        "Flutter",
+        "Provider",
+        "Firebase",
+        "Play & App Store"
+      ],
+      "media": {
+        "kind": "screenshot",
+        "src": "/images/projects/homefoody-suppliers/02-dashboard-orders.jpg",
+        "alt": "HomeFoody supplier app dashboard showing availability toggle, order totals and recent orders",
+        "badge": "Published app",
+        "w": 760,
+        "h": 1216
+      },
+      "lead": "Two Flutter apps published to Google Play and the App Store, plus the Vue 3 admin console behind them. I was the only mobile developer on both.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "HomeFoody connects home cooks with buyers nearby. The supplier app lets a cook run their kitchen as a small business — register through a multi-step onboarding flow, publish menu items with photos, declare exactly which dates and time slots they can cook, run promotional campaigns and manage orders. The customer app handles discovery, ordering and tracking."
+          ]
+        },
+        {
+          "heading": "The business problem",
+          "body": [
+            "A home cook is not a restaurant. They cook on some days and not others, in limited quantities, within windows that change week to week. Marketplace software built for restaurants assumes continuous opening hours and stock. On the buyer side, one basket can hold dishes from several independent cooks with different pickup windows — a checkout that discovers this at the end fails the order."
+          ]
+        },
+        {
+          "heading": "The solution",
+          "body": [
+            "Availability became a first-class concept rather than an afterthought: a dedicated provider derives month and week views, per-date time slots and default weekday patterns, with a modal editor that reconciles bulk changes back into the page. On the buyer side the cart groups items by supplier all the way through checkout and order history, so per-cook totals and constraints are visible from the start."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "Supplier onboarding — a stepped flow with cascading country → state → suburb → postcode selection, a searchable suburb modal and per-field validation.",
+            "The availability calendar — month and week views over a ~976-line provider deriving selectable time blocks.",
+            "Menu and promotions — an item editor with MIME-typed multipart image upload, plus campaigns with promo codes, discount types, minimum order and banner artwork.",
+            "Order management — the supplier order screen with pickup and delivery context, items, totals and status transitions.",
+            "Customer discovery and cart — OTP sign-in, geolocation with a manual city fallback, persisted cuisine filters and sorting, and the supplier-grouped cart through to checkout.",
+            "Store readiness — Firebase Cloud Messaging with local-notification presentation, connectivity handling, account deletion for store policy, icons and splash screens, and fifteen releases across the two apps."
+          ]
+        },
+        {
+          "heading": "Architecture",
+          "body": [
+            "Provider / ChangeNotifier state, pages organised by feature, typed models, and a single HTTP layer handling tokens from secure storage, timeouts, multipart upload and logout. The Node/Express/MongoDB backend was a colleague's work; the Vue 3 admin console — suppliers, customers, orders, promotions, admins and an activity audit — is mine, sole-authored."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Availability is not opening hours — solved with a dedicated provider rather than a calendar widget, so the supplier's own selections drive what buyers can order.",
+            "Non-technical users on small screens — one decision per screen, searchable geography pickers, inline error text next to the field that caused it.",
+            "Patchy mobile connectivity — connectivity checks with a dedicated no-internet screen, and one HTTP layer handling timeouts and unauthenticated responses uniformly.",
+            "Two store review processes — account deletion, permission usage strings and consent checkboxes added before submission. Both apps passed."
+          ]
+        }
+      ],
+      "gallery": [
+        {
+          "src": "/images/projects/homefoody-suppliers/01-signin.jpg",
+          "alt": "HomeFoody supplier app sign-in screen with email field",
+          "caption": "Supplier sign-in — email OTP",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-suppliers/02-dashboard-orders.jpg",
+          "alt": "Supplier dashboard showing availability toggle, order totals and a list of recent orders with status",
+          "caption": "Supplier dashboard — availability, totals, orders (names blurred)",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-suppliers/03-my-menu.jpg",
+          "alt": "Supplier menu list grouped by cuisine with prices",
+          "caption": "Menu grouped by cuisine",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-suppliers/04-promotions-list.jpg",
+          "alt": "List of supplier promotion campaigns with active status and date ranges",
+          "caption": "Promotion campaigns",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-suppliers/05-promotion-editor.jpg",
+          "alt": "Promotion editor showing title, start and end dates, minimum order and discount type",
+          "caption": "Promotion editor",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-suppliers/06-menu-item-editor.jpg",
+          "alt": "Menu item editor showing price, food type, servings, cook time and ingredients",
+          "caption": "Menu item editor",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-customers/01-otp-signin.jpg",
+          "alt": "HomeFoody customer app sign-in screen",
+          "caption": "Customer sign-in — email OTP",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-customers/02-discovery-home.jpg",
+          "alt": "Customer discovery screen with promotions carousel and nearby suppliers",
+          "caption": "Discovery — promotions and nearby suppliers",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-customers/03-food-filters.jpg",
+          "alt": "Food listing with cuisine filters and sort controls",
+          "caption": "Food listing with filters and sorting",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-customers/04-dish-detail.jpg",
+          "alt": "Dish detail screen showing cook time, servings and ingredients",
+          "caption": "Dish detail",
+          "w": 760,
+          "h": 1013
+        },
+        {
+          "src": "/images/projects/homefoody-customers/05-cart-grouped-by-supplier.jpg",
+          "alt": "Cart screen with items grouped under two separate suppliers, each with its own promo code field",
+          "caption": "Cart grouped by supplier",
+          "w": 760,
+          "h": 1216
+        },
+        {
+          "src": "/images/projects/homefoody-customers/06-promotions.jpg",
+          "alt": "Promotions available to the buyer with discount codes",
+          "caption": "Buyer-facing promotions",
+          "w": 760,
+          "h": 1216
+        }
+      ],
+      "galleryNote": "Captured from the released builds, August–September 2024. Published apps, shown with permission. Screens containing customer contact details were excluded, and the order list on the dashboard has its customer names blurred.",
+      "outcomes": [
+        "Both apps live on Google Play and the App Store under their own bundle identifiers.",
+        "~36,200 lines delivered across the two apps in five months, as the only mobile developer.",
+        "Fifteen releases — supplier to 2.5.1+8, customer to 2.4.1+7.",
+        "The Vue 3 admin console behind them: 36 of 36 commits, sole author."
+      ],
+      "outcomeNote": "Download and usage figures are not published here. If a number cannot be counted from the code or the stores, it is not shown.",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "Provider",
+        "Firebase Messaging",
+        "geolocator",
+        "secure storage",
+        "Vue 3",
+        "TypeScript",
+        "Vuex",
+        "Tailwind"
+      ],
+      "platforms": "Android · iOS · Vue 3 admin (PWA)",
+      "noAssetsNote": null
+    },
+    {
+      "slug": "agentmate-public-website",
+      "name": "AgentMate Public Website",
+      "cardTitle": "Multi-tenant SSR website engine",
+      "categories": [
+        "fullstack"
+      ],
+      "categoryLabel": "Full-stack",
+      "status": "production",
+      "statusLabel": "Production · internal",
+      "contribution": "703 / 1,485 commits",
+      "role": "Co-owner",
+      "period": "Apr 2025 – Oct 2026",
+      "scale": "One app serving every tenant site",
+      "employer": "NU App Solutions",
+      "featured": true,
+      "order": 5,
+      "summary": "One Nuxt 3 application server-renders every agent and brokerage site on the platform, resolving the tenant from the host header in Nitro middleware and building pages from API-driven section config. My work concentrated on SSR correctness: context across awaits, hydration, first paint.",
+      "tags": [
+        "Nuxt 3",
+        "Vue 3",
+        "Pinia",
+        "Multi-tenancy"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "AgentMate Public Website",
+        "plateStack": [
+          "Nuxt 3",
+          "Nitro",
+          "Pinia",
+          "SSR"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "A multi-tenant Nuxt 3 renderer: one application serves every agent and brokerage website on the platform.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "The tenant is resolved from the host header in Nitro middleware, then each page is composed from API-driven page and section configuration, with an in-browser editor mode for the people who own the content. Per-tenant branding is delivered through CSS variables, so one build serves every tenant without a per-tenant deploy."
+          ]
+        },
+        {
+          "heading": "The business problem",
+          "body": [
+            "Every agent wants their own site, and no platform can afford to build or deploy one per agent. The alternative — a single rendering engine driven by configuration — only works if server rendering is correct, because these are public, SEO-critical pages."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "Section rendering from API-driven configuration, with the editor mode that writes it back.",
+            "SSR correctness work: Nuxt context propagation across awaits, hydration determinism, and eliminating unstyled first paint.",
+            "Per-tenant theming through CSS custom properties rather than per-tenant builds.",
+            "Server routes for sitemap and robots generation per tenant."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Losing the Nuxt context after an await inside middleware — resolved with explicit context propagation.",
+            "Hydration mismatches caused by tenant-dependent rendering — made deterministic by resolving the tenant before render rather than during it.",
+            "One build, many brands — CSS variables set at the document level per tenant."
+          ]
+        }
+      ],
+      "outcomes": [
+        "703 of 1,485 commits — one of two principal contributors.",
+        "A single application rendering every tenant site in production."
+      ],
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Nuxt 3",
+        "Vue 3",
+        "Pinia",
+        "Nitro",
+        "Tailwind",
+        "Leaflet",
+        "GSAP",
+        "pdfjs"
+      ],
+      "platforms": "Web · SSR",
+      "gallery": [],
+      "galleryNote": null,
+      "outcomeNote": null
+    },
+    {
+      "slug": "atm-mileage-tracker",
+      "name": "ATM Mileage Tracker",
+      "cardTitle": "Background GPS mileage tracking",
+      "categories": [
+        "flutter"
+      ],
+      "categoryLabel": "Flutter",
+      "status": "production",
+      "statusLabel": "Production · internal",
+      "contribution": "68 / 97 commits",
+      "role": "Primary author",
+      "period": "Oct 2025 – Aug 2026",
+      "scale": "Background service + offline sync",
+      "employer": "NU App Solutions",
+      "featured": true,
+      "order": 6,
+      "summary": "Offline-first SQLite sync queue with idempotency keys and backoff, Ramer–Douglas–Peucker path simplification, and a duplicate-trip bug caused by the plugin running a second isolate.",
+      "tags": [
+        "Flutter",
+        "SQLite",
+        "Foreground service",
+        "CoreMotion"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "ATM Mileage Tracker",
+        "plateStack": [
+          "Flutter",
+          "sqflite",
+          "geolocator",
+          "Swift"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "Automatic background trip capture for mileage reimbursement, synced to the CRM at a per-kilometre rate.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "The app records driving trips without the user starting anything, filters GPS noise, simplifies the path, and syncs each trip to the CRM. A teammate built the first tracking engine; I joined after v1 and own about 70% of the commits."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "Backend integration — login via Google token exchange, workspace selection, a REST client with timeouts and 401 handling.",
+            "An offline-first SQLite sync queue with client-generated UUIDs as idempotency keys, exponential backoff and a visible failed state.",
+            "Ramer–Douglas–Peucker path simplification at an 8-metre epsilon, plus accuracy gates, implausible-speed rejection and centroid-based stationary detection.",
+            "The native iOS side in Swift — CoreMotion activity recognition and a CLLocationManager keep-alive — and the Podfile permission macros.",
+            "Test tooling: GPX routes and ADB scripts for the emulator, a 48-finding QA audit and a 21-case device plan."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Duplicate trips after reboot: the foreground-task plugin runs a second isolate, so the singleton location service existed twice. Fixed with an owner/companion model keyed on which isolate started the service.",
+            "Battery versus accuracy — adaptive location settings driven by movement state.",
+            "At-least-once delivery without duplicate trips server-side — client UUID idempotency keys."
+          ]
+        }
+      ],
+      "outcomes": [
+        "68 of 97 commits after joining a running project.",
+        "RDP simplification materially reduces the stored and transmitted path.",
+        "A 48-finding QA audit and a 21-case device test plan, both authored by me."
+      ],
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Flutter",
+        "Dart",
+        "sqflite",
+        "geolocator",
+        "flutter_foreground_task",
+        "Kotlin",
+        "Swift",
+        "CoreMotion"
+      ],
+      "platforms": "Android · iOS",
+      "gallery": [],
+      "galleryNote": null,
+      "outcomeNote": null
+    },
+    {
+      "slug": "enbuilder-2021",
+      "name": "EnBuilder 2021",
+      "cardTitle": "Builder sales & inventory platform",
+      "categories": [
+        "fullstack"
+      ],
+      "categoryLabel": "Full-stack",
+      "status": "production",
+      "statusLabel": "Production · internal",
+      "contribution": "~1,671 / 2,075 commits (80%)",
+      "role": "Primary author",
+      "period": "Feb 2021 – Mar 2025",
+      "scale": "Ten feature modules · SPA + PWA",
+      "employer": "NeoSoft Technologies",
+      "order": 7,
+      "summary": "Ten Angular feature modules — projects, inventories, sales deals, package centre, finance, purchaser portal, reports and security — delivered as an SPA and PWA. The heaviest single body of work in my career.",
+      "tags": [
+        "Angular",
+        "TypeScript",
+        "PWA",
+        "Docker"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "EnBuilder 2021",
+        "plateStack": [
+          "Angular",
+          "SCSS",
+          "PWA",
+          "Docker"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "A sales and inventory platform for home and condominium builders. I authored roughly 80% of its 2,075 commits.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "Builders sell units from floor plans long before completion. The platform carries projects and inventories, sales deals, a package centre of options and finishes, finance, a purchaser portal, reporting and access control — as an Angular SPA with service-worker PWA caching."
+          ]
+        },
+        {
+          "heading": "The business problem",
+          "body": [
+            "Pricing, availability, options, colour selections, incentives, deposits and amendments have to stay consistent across sales staff, purchasers and finance — a process traditionally run on spreadsheets and paper amendment forms."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "body": [
+            "My file-touch counts concentrate in inventories, sales, the package centre, service, the purchaser portal, finance, projects and reports — the commercial core of the product."
+          ],
+          "list": [
+            "Inventory and sales-deal management across the project lifecycle.",
+            "The package centre: options, finishes and their pricing rules.",
+            "Purchaser-facing portal screens and finance reporting.",
+            "Docker dev and production builds, nginx-served output, and PWA caching configuration."
+          ]
+        },
+        {
+          "heading": "Employer attribution",
+          "body": [
+            "Built at NeoSoft Technologies: 1,375 of my commits predate May 2022. The remaining 296 fall under NU App Solutions, as does all later EnBuilder-family work."
+          ]
+        }
+      ],
+      "outcomes": [
+        "~1,671 of 2,075 commits — the largest single contribution in my career.",
+        "1,333 commits in 2021 alone.",
+        "Ten feature modules in continuous production use for four years."
+      ],
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Angular",
+        "TypeScript",
+        "SCSS",
+        "PWA",
+        "Docker",
+        "Karma",
+        "Protractor"
+      ],
+      "platforms": "Web · PWA",
+      "gallery": [],
+      "galleryNote": null,
+      "outcomeNote": null,
+      "featured": false
+    },
+    {
+      "slug": "tradeinsafe",
+      "name": "TradeInSafe",
+      "cardTitle": "B2B wholesale marketplace",
+      "categories": [
+        "fullstack"
+      ],
+      "categoryLabel": "Full-stack",
+      "status": "production",
+      "statusLabel": "Production · internal",
+      "contribution": "475 / 562 commits (85%)",
+      "role": "Primary author",
+      "period": "Nov 2022 – Apr 2024",
+      "scale": "Three repositories",
+      "employer": "NU App Solutions",
+      "order": 8,
+      "summary": "Stores and sellers, a product catalogue with samples and shipping, buyer–seller messaging with quotations and attachments, multi-currency orders, Stripe and PayPal.",
+      "tags": [
+        "Vue",
+        "TypeScript",
+        "Express",
+        "MongoDB"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "TradeInSafe",
+        "plateStack": [
+          "Vue",
+          "Vue CLI",
+          "Express",
+          "MongoDB"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "A B2B wholesale marketplace across three repositories — storefront, admin console and Node backend — where I hold 85% of the commits.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "Sellers run stores with a product catalogue carrying sample and shipping options; buyers negotiate through in-platform messaging with quotations and attachments, then order in their own currency."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "The storefront and the admin console, both Vue with TypeScript.",
+            "Buyer–seller messaging with quotation threads and file attachments.",
+            "Order creation with multi-currency handling.",
+            "Payment integration — PayPal and Stripe — and the settings surface behind them."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Negotiation is stateful: a quotation thread has to stay consistent as either side revises it.",
+            "Multi-currency pricing without drift between catalogue, quotation and order."
+          ]
+        }
+      ],
+      "outcomes": [
+        "475 of 562 commits across three repositories.",
+        "Front end, admin and backend owned simultaneously — the clearest evidence of full-stack ownership before the AgentMate platform."
+      ],
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Vue",
+        "Vue CLI",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "EJS",
+        "Stripe",
+        "PayPal"
+      ],
+      "platforms": "Web",
+      "gallery": [],
+      "galleryNote": null,
+      "outcomeNote": null,
+      "featured": false
+    },
+    {
+      "slug": "encharity-admin",
+      "name": "EnCharity Admin",
+      "cardTitle": "Charity ticketing & membership back office",
+      "categories": [
+        "fullstack"
+      ],
+      "categoryLabel": "Full-stack",
+      "status": "production",
+      "statusLabel": "Production · internal",
+      "contribution": "117 / 146 commits (80%)",
+      "role": "Primary author",
+      "period": "Apr – Nov 2022",
+      "scale": "CoreUI Angular back office",
+      "employer": "NU App Solutions",
+      "order": 9,
+      "summary": "Admissions, tickets and door scanners, events and programmes, discounts and promo codes, orders, podcasts, a virtual museum and the portal CMS.",
+      "tags": [
+        "Angular",
+        "CoreUI",
+        "Froala",
+        "Charts"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "EnCharity Admin",
+        "plateStack": [
+          "Angular",
+          "CoreUI",
+          "Quill",
+          "ng2-charts"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "The back office for a charitable and cultural institution — donations, memberships, events and museum ticketing.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "Staff manage admissions, issued tickets and door scanners, events and programmes, discounts and promo codes, orders, parking, podcasts, a virtual museum and the CMS behind the public portal. I was also a co-owner of the public donor and membership portal, which shipped to web and both app stores through Ionic and Capacitor."
+          ]
+        },
+        {
+          "heading": "The business problem",
+          "body": [
+            "Charities run donations, memberships and ticketed events on separate tools that do not share a constituent record, so one person appears three times. A single back office keeps one record per person and lets non-technical staff publish content and scan tickets at the door."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "Ticketing and the door ticket-scanner screens.",
+            "Admissions, events, discounts and promo codes, and orders.",
+            "Podcasts, news and the virtual museum surfaces.",
+            "Portal CMS and settings for non-technical content owners."
+          ]
+        }
+      ],
+      "outcomes": [
+        "117 of 146 commits — primary author of the back office.",
+        "Co-owner of the public portal (103 of 282 commits), shipped to web, iOS and Android."
+      ],
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Angular",
+        "CoreUI",
+        "Froala",
+        "Quill",
+        "ng2-charts",
+        "Ionic",
+        "Capacitor"
+      ],
+      "platforms": "Web · Android · iOS",
+      "gallery": [],
+      "galleryNote": null,
+      "outcomeNote": null,
+      "featured": false
+    },
+    {
+      "slug": "settlement-form-engine",
+      "name": "SettlementFormPOC",
+      "cardTitle": "Dynamic form engine (prototype)",
+      "categories": [
+        "fullstack"
+      ],
+      "categoryLabel": "Full-stack",
+      "status": "prototype",
+      "statusLabel": "Prototype · sole-authored",
+      "contribution": "14 / 14 commits",
+      "role": "Sole author",
+      "period": "May – Jun 2026",
+      "scale": "TypeScript monorepo",
+      "employer": "NU App Solutions",
+      "order": 10,
+      "summary": "A funder-agnostic intake engine where everything is data, not code: a json-logic engine interprets form definitions held in MongoDB — computed scoring, skip logic, inference, thresholds and render plan.",
+      "tags": [
+        "React",
+        "TypeScript",
+        "Express",
+        "Vitest"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "SettlementFormPOC",
+        "plateStack": [
+          "React",
+          "Vite",
+          "Express",
+          "Mongoose"
+        ],
+        "plateNote": "Prototype · sole-authored POC"
+      },
+      "lead": "A proof of concept for settlement-services intake, written end to end by me in a TypeScript monorepo.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "Form definitions live in MongoDB and are interpreted at runtime by an isomorphic engine package shared by client and server: computed scoring, skip logic, inference, thresholds, a render plan and multilingual resolution. Adding a new funder's form means adding data, not code."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "body": [
+            "Everything — the engine package, the React client, the Express API, the schema and the tests. 14 of 14 commits."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Keeping one engine correct on both sides of the wire — an isomorphic package consumed by client and server alike.",
+            "Expressing scoring and skip logic as data without inventing a new language — json-logic as the interpreter."
+          ]
+        }
+      ],
+      "outcomes": [
+        "Sole author: 14 of 14 commits.",
+        "The only project in my portfolio that is safely publishable as source — a POC over a public government form, with no employer data in it."
+      ],
+      "stack": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "Mongoose",
+        "Vitest",
+        "i18n"
+      ],
+      "platforms": "Web",
+      "gallery": [],
+      "galleryNote": null,
+      "noAssetsNote": "It is a proof of concept rather than a released product, and no interface captures were kept. It is also the one project here whose source could be published, since it is sole-authored and built over a public government form with no employer data in it.",
+      "outcomeNote": null,
+      "featured": false
+    },
+    {
+      "slug": "universally-connected",
+      "name": "Universally Connected",
+      "cardTitle": "AI podcast & voice generation",
+      "categories": [
+        "ai"
+      ],
+      "categoryLabel": "AI",
+      "status": "production",
+      "statusLabel": "Production status unconfirmed",
+      "contribution": "14 / 285 commits",
+      "role": "Contributor",
+      "period": "Nov 2024",
+      "scale": "Podcast + voice services",
+      "employer": "NU App Solutions",
+      "order": 11,
+      "summary": "My first AI backend work: podcast and episode APIs, a monologue service, multi-provider AI voice generation, and credit metering with per-model price charging.",
+      "tags": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "ElevenLabs"
+      ],
+      "media": {
+        "kind": "plate",
+        "plateName": "Universally Connected",
+        "plateStack": [
+          "Node.js",
+          "Express",
+          "MongoDB",
+          "Multi-provider TTS"
+        ],
+        "plateNote": "No public screenshot · internal product"
+      },
+      "lead": "An AI content platform backend. My contribution was the podcast and voice-generation services.",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": [
+            "Part of a nine-service backend. I built the podcast and episode APIs, a monologue service, and AI voice generation across multiple providers, with credit metering that charges per model at its own price."
+          ]
+        },
+        {
+          "heading": "What I built",
+          "list": [
+            "Podcast and episode APIs.",
+            "The monologue service.",
+            "Multi-provider AI voice generation with provider fallback.",
+            "Credit metering and per-model price charging."
+          ]
+        },
+        {
+          "heading": "Technical challenges",
+          "list": [
+            "Paid generation must never run without metering — credits are reserved before the provider call and reconciled after it.",
+            "Providers price differently per model, so charging had to be model-aware rather than per-request."
+          ]
+        }
+      ],
+      "outcomes": [
+        "14 of 285 commits — a focused contribution, not ownership of the platform.",
+        "First production AI work, a year before the OpenAI features in the CRM."
+      ],
+      "outcomeNote": "Launch status is not confirmed, so this project says 'built', not 'launched'.",
+      "noAssetsNote": "No screenshots are published for this project. It is an employer-internal system, and nothing from it is shown without written authorisation. The description on this page contains no internal hostnames, endpoints or schema.",
+      "stack": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "ElevenLabs",
+        "Neets",
+        "OpenAI"
+      ],
+      "platforms": "Backend services",
+      "gallery": [],
+      "galleryNote": null,
+      "featured": false
+    }
+  ]
+}

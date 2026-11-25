@@ -1,0 +1,17 @@
+{
+  "intro": "Each group carries the evidence behind it. Confidence is stated honestly — including the gaps.",
+  "groups": [
+    { "title": "Frontend", "tags": ["Angular","Vue 3","Nuxt 3 SSR","TypeScript","Vuex","Pinia","Vue Router","Tailwind","Bulma","SCSS","Ionic","PWA"], "note": "8 Angular apps · Vue 3 CRM at ~61% of 616 commits" },
+    { "title": "Mobile", "tags": ["Flutter","Dart","Provider","Hive","sqflite","Platform channels","Kotlin","Swift","Capacitor","FCM"], "note": "6 Flutter apps · 2 published to both stores" },
+    { "title": "Backend", "tags": ["Node.js","Express","REST design","JWT sessions","RBAC","Multi-tenancy","node-cron","PM2","nginx","API gateway"], "note": "Microservices behind CRM, website and social products" },
+    { "title": "Database", "tags": ["MongoDB","Mongoose","Aggregation pipelines","Compound indexes","TTL indexes","SQLite","PouchDB","Hive"], "note": "Offline-first modelling in three different stacks" },
+    { "title": "AI", "tags": ["OpenAI API","JSON-mode extraction","Vision OCR","Files API","Transcription","AbortController","Credit metering"], "note": "In production since 2024 — integration, not model work" },
+    { "title": "Integrations", "tags": ["Google Workspace","Two-way Calendar sync","Meta Graph","Apple sign-in","Stripe","PayPal","PayU","Maps & Places","MLS / RESO","SendGrid","S3"], "note": "Token lifecycles and conflict-safe sync" },
+    { "title": "DevOps & quality", "tags": ["GitHub Actions","Azure DevOps","PM2","Release signing","R8 / ProGuard","Store submission","Documented QA","Postman"], "note": "20+ mobile releases · two store review processes" }
+  ],
+  "gaps": [
+    { "title": "Automated test coverage", "body": "Thin in employer repositories. I compensated with documented manual QA, emulator tooling and targeted regression tests — and I would unit-test the GPS filters, sync queue and auth middleware first." },
+    { "title": "Cloud-native infrastructure", "body": "PM2, nginx and GitHub Actions on single hosts, with Docker basics. No Kubernetes, and no message broker or event streaming — I used crons and outbox collections, and can say exactly what a queue would add." },
+    { "title": "ML and model work", "body": "None. I integrate LLM APIs in production and build the tooling around them; that is the claim, and it is the accurate one." }
+  ]
+}

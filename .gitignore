@@ -1,0 +1,14 @@
+.data/
+dist
+dist/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+node_modules/
+.nuxt/
+.output/
+playwright-report/
+playwright-results.json
+test-results/

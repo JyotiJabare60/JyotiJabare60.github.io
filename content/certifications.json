@@ -1,0 +1,19 @@
+{
+  "intro": "Both certificates carry public verification links. Everything else on this page is counted from the code.",
+  "certifications": [
+    { "monogram": "CI", "title": "Azure DevOps — Build CI/CD Release Pipelines", "issuer": "Udemy · 10 October 2026 · 7 hours", "verifyUrl": null },
+    { "monogram": "FL", "title": "The Complete Flutter Development Bootcamp with Dart", "issuer": "Udemy · April 2024", "verifyUrl": null },
+    { "monogram": "★", "title": "Best Employee of the Year", "issuer": "NeoSoft Technologies · 2018–2019", "verifyUrl": null }
+  ],
+  "calloutHome": "Certification to two published apps in five months: Flutter certified in April 2024, both HomeFoody apps live on Google Play and the App Store by September 2024.",
+  "record": [
+    { "value": "10", "label": "Repositories as primary author", "note": "Two of them sole-authored" },
+    { "value": "2", "label": "Apps through store review", "note": "Google Play & App Store, 2024" },
+    { "value": "20+", "label": "Mobile releases shipped", "note": "Signing, R8, SDK upgrades" },
+    { "value": "5", "label": "Months, certification to launch", "note": "Flutter certified Apr 2024 → both apps live Sep 2024" }
+  ],
+  "evidence": [
+    { "title": "Standards and knowledge sharing", "body": "A 584-line portable consent-compliance implementation guide adopted beyond the service it was written for; architecture, sync and timezone design documents; nine module guides inside the Flutter CRM." },
+    { "title": "Quality leadership", "body": "A 36-case end-to-end QA report, a 48-finding audit with a 21-case device plan, a documented 20-bug hardening sweep, and emulator GPS test tooling — all authored personally." }
+  ]
+}

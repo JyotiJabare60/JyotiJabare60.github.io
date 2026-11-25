@@ -1,0 +1,46 @@
+{
+  "name": "Jyoti Jabare",
+  "roleLine": "Senior Full-Stack Engineer · Flutter Developer · AI-Enabled Applications",
+  "tagline": "Full-stack engineer — Angular and Vue on the web, Flutter on mobile, Node and MongoDB behind both — shipping production AI features.",
+  "location": "Navi Mumbai, Maharashtra, India",
+  "availability": "Available from December 2026",
+  "email": "jyotijabare60@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/jyoti-jabare",
+  "linkedinLabel": "www.linkedin.com/in/jyoti-jabare",
+  "assets": {
+    "resumePdf": null,
+    "profilePhoto": null,
+    "githubUrl": "https://github.com/JyotiJabare60",
+    "ogImage": null
+  },
+  "nav": [
+    {
+      "to": "/",
+      "label": "Home"
+    },
+    {
+      "to": "/about",
+      "label": "About"
+    },
+    {
+      "to": "/experience",
+      "label": "Experience"
+    },
+    {
+      "to": "/projects",
+      "label": "Projects"
+    },
+    {
+      "to": "/skills",
+      "label": "Skills"
+    },
+    {
+      "to": "/certifications",
+      "label": "Certifications"
+    },
+    {
+      "to": "/contact",
+      "label": "Contact"
+    }
+  ]
+}

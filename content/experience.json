@@ -1,0 +1,37 @@
+{
+  "intro": "Every project below is attributed to the employer it was built under, with my share of the repository counted from git history.",
+  "entries": [
+    {
+      "period": "1 May 2022 — 30 November 2026 · 4 yrs 7 mths",
+      "role": "Software Developer",
+      "org": "NU App Solutions · Software Development · remote",
+      "items": [
+        "<b>Real-estate SaaS platform (Mar 2025 – Oct 2026).</b> Vue 3 CRM — 379 of 616 commits, with Google Workspace two-way sync and OpenAI document extraction. Nuxt 3 multi-tenant SSR website engine — 703 of 1,485 commits. Node microservices for the contact and lead lifecycle — 136 of 291. Flutter CRM — 224 of 286 commits and 182 of 189 Dart files. Background GPS mileage tracker — 68 of 97.",
+        "<b>EnServicePortal (Jul 2023 – Jun 2025).</b> Offline-first construction defect and inspection app — <b>170 of 179 commits</b>, ~22,300 lines, Android, iOS and web from one Angular codebase.",
+        "<b>HomeFoody (Apr – Sep 2024).</b> Two Flutter consumer apps published to Google Play and the App Store as the <b>only mobile developer</b> — 116 of 132 and 73 of 86 commits — plus their Vue 3 admin console, sole-authored.",
+        "<b>EnBuilder purchaser portal (to Sep 2025)</b> — 141 of 253 commits; canvas layout customisation and parking, locker and bicycle allocation from live inventory.",
+        "<b>EnCharity portals (2022).</b> Charity and museum back office — 117 of 146 commits; donor and membership portal — 103 of 282.",
+        "<b>Marketplaces (2022 – 2024).</b> TradeInSafe B2B wholesale — 475 of 562 commits across three repositories. Shoplocally local commerce — 201 of 338 across four.",
+        "<b>SettlementFormPOC (2026).</b> Sole author of a funder-agnostic dynamic form engine."
+      ]
+    },
+    {
+      "period": "June 2018 — 4 April 2022 · 3 yrs 10 mths",
+      "role": "Senior Software Developer · Associate Team Lead",
+      "org": "NeoSoft Technologies · Navi Mumbai",
+      "items": [
+        "<b>EnBuilder (from Feb 2021).</b> Builder sales and inventory platform — ~80% of 2,075 commits, with 1,375 of mine before May 2022. Ten feature modules: projects, inventories, sales deals, package centre, finance, purchaser portal, reports, security.",
+        "<b>EnBuilderFieldService (2021 – 2023).</b> The construction field app that preceded EnServicePortal — 81 of 165 commits, with an explicit offline module.",
+        "<b>EnCharity donor portal (from Sep 2021).</b> Angular with Ionic and Capacitor, shipped to web and both app stores.",
+        "<b>Associate team lead for eight developers (2021 – 2022)</b> — sprint delivery, code review, unblocking and technical risk assessment.",
+        "<b>Best Employee of the Year</b>, 2018–2019."
+      ]
+    },
+    {
+      "period": "2018",
+      "role": "B.Sc. Computer Science — 91%",
+      "org": "SIES (Nerul) College of Arts, Science and Commerce · Navi Mumbai",
+      "items": []
+    }
+  ]
+}

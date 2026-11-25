@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Implementation &amp; QA Report — Portfolio Phase 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBFAF8;--surface:#FFF;--surface-2:#F7F5F1;--ink:#15171A;--muted:#5A6069;--faint:#6B727C;
+--accent:#0C6E68;--wash:#E8F2F1;--border:#E5E2DC;--ok:#1F6F3F;--warn:#8A5A00;--bad:#9A3412;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1013;--surface:#16191E;--surface-2:#1C2026;
+--ink:#ECEEF1;--muted:#A2AAB4;--faint:#848D98;--accent:#4FBDB2;--wash:#102E2B;--border:#272C33;
+--ok:#6FCF97;--warn:#E0B55A;--bad:#F0A080;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.62 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+header.top{border-bottom:1px solid var(--border);padding:clamp(40px,6vw,72px) 0 clamp(28px,4vw,44px);margin-bottom:clamp(28px,4vw,48px)}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,serif;font-weight:600;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,1.3rem+2.6vw,3rem);letter-spacing:-.02em;max-width:22ch}
+h2{font-size:clamp(1.45rem,1.2rem+1.1vw,2rem);margin:0 0 16px}
+h3{font-size:1.1rem;margin:22px 0 10px}
+p{margin:0 0 16px;max-width:76ch;color:var(--muted)}
+.lead{font-size:1.1rem;margin-top:20px}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+section{padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--border)}
+.mono{font-family:"JetBrains Mono",monospace;font-size:.8125rem}
+table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:.9375rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:500}
+code{font-family:"JetBrains Mono",monospace;font-size:.85em;background:var(--surface-2);padding:2px 5px;border-radius:4px}
+.ok{color:var(--ok);font-weight:500}.warn{color:var(--warn);font-weight:500}.bad{color:var(--bad);font-weight:500}
+.badge{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
+padding:5px 10px;border-radius:999px;background:var(--wash);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent)}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:24px 0}
+@media(min-width:760px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--surface);padding:20px}
+.kpi b{display:block;font-size:2.2rem;font-weight:600;letter-spacing:-.03em;line-height:1}
+.kpi span{display:block;margin-top:8px;font-size:.9rem;color:var(--ink)}
+.kpi em{display:block;margin-top:3px;font-family:"JetBrains Mono",monospace;font-size:.72rem;font-style:normal;color:var(--faint)}
+figure{margin:0 0 22px;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+figure img{display:block;width:100%;height:auto;border-bottom:1px solid var(--border)}
+figcaption{padding:11px 13px;font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--faint);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+figcaption b{color:var(--ink);font-weight:500}
+.pair{display:grid;gap:22px}@media(min-width:820px){.pair{grid-template-columns:1fr 1fr}}
+.row3{display:grid;gap:22px}@media(min-width:760px){.row3{grid-template-columns:repeat(3,1fr)}}
+.phone{max-width:320px}
+.note{border-left:2px solid var(--accent);background:var(--wash);padding:14px 18px;border-radius:0 8px 8px 0;margin:18px 0}
+.note p{margin:0;color:var(--ink);font-size:.9375rem}
+ul{margin:0 0 16px;padding-left:20px;color:var(--muted)}li{margin-bottom:7px}
+a{color:var(--accent)}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.toc a{font-family:"JetBrains Mono",monospace;font-size:.72rem;text-decoration:none;border:1px solid var(--border);border-radius:999px;padding:6px 11px;color:var(--muted)}
+footer{border-top:1px solid var(--border);padding:28px 0 56px;margin-top:32px}
+footer p{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--faint)}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <p class="eyebrow">Phase 4 · Implementation &amp; QA</p>
+  <h1>Nuxt 3 portfolio — implementation and QA report</h1>
+  <p class="lead">The approved Phase 3 design, implemented as a statically generated Nuxt 3 site with
+  file-based content. <b>49 Playwright tests pass, the production build succeeds, and nothing is deployed.</b></p>
+  <p class="mono">25 November 2026 · Nuxt 3.21.11 · Vue 3.5.46 · TypeScript 5.9.3 · Playwright 1.65.1</p>
+  <ul class="toc">
+    <li><a href="#summary">Summary</a></li><li><a href="#figures">Figure cross-check</a></li>
+    <li><a href="#pages">Pages</a></li><li><a href="#features">Features</a></li>
+    <li><a href="#defects">Defects fixed</a></li><li><a href="#tests">Tests</a></li>
+    <li><a href="#build">Build</a></li><li><a href="#shots">Screenshots</a></li>
+    <li><a href="#assets">Missing assets</a></li><li><a href="#outstanding">Outstanding</a></li>
+  </ul>
+</div></header>
+
+<div class="wrap">
+
+<section id="summary">
+  <h2>1. Implementation summary</h2>
+  <div class="kpis">
+    <div class="kpi"><b>9</b><span>Page templates</span><em>18 routes prerendered</em></div>
+    <div class="kpi"><b>49</b><span>Tests passing</span><em>0 failing · 50.3s</em></div>
+    <div class="kpi"><b>13</b><span>Components</span><em>6 content files</em></div>
+    <div class="kpi"><b>2.3&nbsp;MB</b><span>Static output</span><em>fully prerendered</em></div>
+  </div>
+  <table>
+    <tr><th>Decision</th><th>Detail</th></tr>
+    <tr><td>Framework</td><td>Nuxt 3.21.11, Vue 3 Composition API with <code>&lt;script setup&gt;</code>, TypeScript throughout, static generation (<code>nuxi generate</code>)</td></tr>
+    <tr><td><b>Styling: no Tailwind</b></td><td>The brief allowed "Tailwind CSS <em>or compatible existing styling architecture</em>". The approved design is already expressed as CSS custom-property tokens plus a component layer, so those files were carried over unchanged into <code>assets/css/</code>. Re-expressing them as Tailwind utilities would have risked silent drift from the approved design and added a dependency that buys nothing here. Tokens and components are identical to Phase 3</td></tr>
+    <tr><td>Icons</td><td><code>lucide-vue-next</code> — sun / moon / monitor / menu</td></tr>
+    <tr><td>Content</td><td>Six JSON files in <code>content/</code>, typed by <code>types/content.ts</code> and read through <code>composables/useContent.ts</code>. No component edit is needed to change any text, project or figure</td></tr>
+    <tr><td>Routing</td><td>File-based. Project detail pages are generated per slug from content; adding a project adds its route automatically</td></tr>
+    <tr><td>Not built</td><td>No admin dashboard, no authentication, no database, no backend API. Two server routes exist solely to generate <code>sitemap.xml</code> and <code>robots.txt</code> at build time</td></tr>
+  </table>
+</section>
+
+<section id="figures">
+  <h2>2. Figure cross-check <span class="badge">required before publishing</span></h2>
+  <p>The brief asked me not to trust the mockup's "8 Angular applications" and "6 Flutter apps". Both were
+  re-measured against the repositories on both drives, counting all three of your git identities across all
+  branches. <b>Both figures hold, and the Angular figure is conservative.</b></p>
+  <table>
+    <tr><th>Angular — claim: 8</th><th>Marker</th><th>Your commits</th></tr>
+    <tr><td>EnBuilder2021</td><td><code>angular.json</code></td><td>1,671</td></tr>
+    <tr><td>EnServicePortal</td><td><code>angular.json</code></td><td>170</td></tr>
+    <tr><td>EnBuilderPurchaserPortal</td><td><code>angular.json</code></td><td>141</td></tr>
+    <tr><td>EncharityPortalAdmin-V2</td><td><code>angular.json</code></td><td>117</td></tr>
+    <tr><td>EnCharityUserPortal-V2</td><td><code>angular.json</code></td><td>103</td></tr>
+    <tr><td>EnBuilderFieldService</td><td><code>angular.json</code></td><td>81</td></tr>
+    <tr><td>ShoplocallyAdmin</td><td><code>angular.json</code></td><td>61</td></tr>
+    <tr><td>ShoplocallyWeb</td><td><code>angular.json</code></td><td>61</td></tr>
+    <tr><td colspan="3" class="mono">Three further Angular repositories exist below the threshold (19, 10 and 8 commits), plus NPCRM at 188 which you excluded. Counting them would give 9–12, so <b>8 understates rather than overstates</b>.</td></tr>
+  </table>
+  <table>
+    <tr><th>Flutter — claim: 6</th><th>Evidence</th><th>Your commits</th></tr>
+    <tr><td>AgentMate-CRM-Mobile</td><td><code>pubspec.yaml</code></td><td>224</td></tr>
+    <tr><td>HomeFoody Suppliers</td><td><code>pubspec.yaml</code> · published</td><td>116</td></tr>
+    <tr><td>HomeFoody Customers</td><td><code>pubspec.yaml</code> · published</td><td>73</td></tr>
+    <tr><td>ATMMileageTracker</td><td><code>pubspec.yaml</code></td><td>68</td></tr>
+    <tr><td>EnBuilder 2026 purchaser portal</td><td class="warn">nested in a monorepo — weaker evidence</td><td>126 (repo)</td></tr>
+    <tr><td>ATM-OpenHouseApp</td><td class="warn">repo absent; documented in your own <code>flutter-apps-summary.html</code></td><td>20</td></tr>
+  </table>
+  <div class="note"><p><b>Two corrections applied to the content.</b> EnBuilderFieldService is <b>81 of 165</b> commits,
+  not 63 of 147 — the earlier count missed your <code>Jyoti Jabare</code> git identity. The EnCharity donor portal total is
+  <b>282</b>, not 272. Both are now correct on the site and in the planning documents.</p></div>
+</section>
+
+<section id="pages">
+  <h2>3. Pages completed</h2>
+  <table>
+    <tr><th>Route</th><th>Page</th><th>Notes</th></tr>
+    <tr><td><code>/</code></td><td>Home</td><td>Approved section order: nav → hero → highlights → featured projects → technical expertise → experience → certifications → contact → footer</td></tr>
+    <tr><td><code>/about</code></td><td>About</td><td>Two-depth narrative with at-a-glance rail</td></tr>
+    <tr><td><code>/experience</code></td><td>Experience</td><td>Employer-attributed timeline, per-project contribution</td></tr>
+    <tr><td><code>/projects</code></td><td>Projects listing</td><td>Filters: All 11 · Full-stack 7 · Flutter 3 · AI 3</td></tr>
+    <tr><td><code>/projects/[slug]</code></td><td>Case studies ×11</td><td>Both approved states — gallery, or the labelled "no screenshots" callout</td></tr>
+    <tr><td><code>/skills</code></td><td>Skills</td><td>Seven groups plus honest gaps</td></tr>
+    <tr><td><code>/certifications</code></td><td>Certifications</td><td>Certificates, delivery-record KPI row, evidence cards</td></tr>
+    <tr><td><code>/contact</code></td><td>Contact</td><td>Direct contact; no form backend, stated plainly on the page</td></tr>
+    <tr><td><code>/sitemap.xml</code>, <code>/robots.txt</code></td><td>Generated</td><td>18 URLs, built from content</td></tr>
+    <tr><td>404</td><td>Error page</td><td>Styled, with routes back into the site</td></tr>
+  </table>
+</section>
+
+<section id="features">
+  <h2>4. Features implemented</h2>
+  <ul>
+    <li><b>Theme management</b> — light, dark and system, system as default, persisted in <code>localStorage</code>, applied by an inline <code>&lt;head&gt;</code> script before first paint so there is no flash. Verified by test, including across navigation and reload.</li>
+    <li><b>Project filtering</b> — reactive category filter with <code>aria-pressed</code> state and a screen-reader live region announcing the result count.</li>
+    <li><b>Two case-study states</b> — projects with approved screenshots get a responsive 12-image gallery with captions and intrinsic dimensions; the other ten get the designed specification plate plus an explicit statement that nothing is published. No fabricated app imagery anywhere.</li>
+    <li><b>Conditional assets</b> — the résumé button, certificate verification links and GitHub link render only when their path is set in <code>content/site.json</code>. Today they are <code>null</code>, so the site shows no dead controls.</li>
+    <li><b>SEO</b> — per-page title, description, canonical and Open Graph; <code>Person</code> structured data on the home page; generated sitemap and robots; semantic landmarks and a skip link.</li>
+    <li><b>Performance</b> — fully prerendered, lazy-loaded images with width/height to prevent layout shift, and screenshots served at 760px (40–140 KB) instead of the 2.6–4.6 MB originals.</li>
+    <li><b>Accessibility</b> — approved AA palette, visible focus rings, descriptive alt text on every image, reduced-motion support.</li>
+  </ul>
+</section>
+
+<section id="defects">
+  <h2>5. Defects found and fixed during implementation</h2>
+  <p>All five were found by running the suite or by inspecting rendered output — none were reported as passing before they were fixed.</p>
+  <table>
+    <tr><th>#</th><th>Defect</th><th>Resolution</th></tr>
+    <tr><td class="bad">1</td><td><b>A published screenshot contained personal data.</b> <code>04-edit-menu-item.jpg</code> was in fact the <b>Customers List</b> screen — six names, addresses and phone numbers, including Jyoti's own. My Phase 3 mapping of the source captures was wrong, and three supplier captions were attached to the wrong screens.</td><td>Image deleted from the site and from the approved assets folder. All four supplier screens re-staged from individually verified sources, captions corrected, and a <b>Playwright privacy guard</b> added that fails if any file outside the approved list appears under <code>public/images/projects</code></td></tr>
+    <tr><td class="warn">2</td><td>The supplier dashboard screenshot showed test-account customer names in the order list</td><td>Names and dates blurred; KPI tiles, statuses and totals kept. Noted in the gallery caption</td></tr>
+    <tr><td class="warn">3</td><td><code>/favicon.ico</code> returned 404 on every page — caught by the "no console errors" assertion</td><td>Brand mark created (teal monogram with the accent dot) as <code>favicon.ico</code>, <code>apple-touch-icon.png</code> and <code>icon-512.png</code>; links added to the document head</td></tr>
+    <tr><td class="warn">4</td><td>Adding intrinsic <code>width</code>/<code>height</code> to gallery images broke their layout — 1,216px-tall empty boxes, because the CSS had no <code>height: auto</code></td><td>Rule corrected in the site stylesheet and back-ported to the Phase 3 design source so the two stay identical</td></tr>
+    <tr><td class="warn">5</td><td>SettlementFormPOC rendered an empty "no screenshots" explanation — it had a plate but no note</td><td>Note written; a test now requires every plate project to carry one and to have an empty gallery</td></tr>
+  </table>
+</section>
+
+<section id="tests">
+  <h2>6. Tests executed</h2>
+  <p><b>49 passed, 0 failed, 50.3s of test time</b> (Playwright 1.65.1, Chromium via the system Chrome channel,
+  run against the generated static output). Reproduce with <code>npm run generate &amp;&amp; npm run test:e2e</code>.</p>
+  <table>
+    <tr><th>Group</th><th>Tests</th><th>What is asserted</th></tr>
+    <tr><td>Routes</td><td>19</td><td>Every route returns &lt;400, renders exactly one non-empty <code>h1</code>, has a title, and logs <b>zero console errors</b>; unknown routes render the 404 page</td></tr>
+    <tr><td>Navigation</td><td>3</td><td>Header links reach every section, the mobile panel opens and navigates, project cards open the matching case study</td></tr>
+    <tr><td>Filters</td><td>2</td><td>Counts match rendered cards for all / full-stack 7 / Flutter 3 / AI 3, pressed state is correct, result count is announced</td></tr>
+    <tr><td>Case-study states</td><td>3</td><td>12 gallery images load after scroll with descriptive alts and declared dimensions; the no-assets project shows the callout and no gallery; plates are labelled</td></tr>
+    <tr><td>Theme</td><td>3</td><td>Switching, persistence across reload and navigation, no flash before paint, and both themes render key pages without console errors</td></tr>
+    <tr><td>Responsive</td><td>6</td><td>No horizontal overflow at 360, 390, 768, 1366 and 1920 across five routes; navigation swaps between mobile and desktop</td></tr>
+    <tr><td>Assets &amp; links</td><td>4</td><td>No dead résumé button, no invented verification links, external links carry <code>target</code> and <code>rel="noopener"</code>, every image has a real alt</td></tr>
+    <tr><td>SEO</td><td>4</td><td>Unique title, description and canonical per page; Open Graph tags; <code>Person</code> JSON-LD; sitemap with 18 URLs and robots; semantic landmarks</td></tr>
+    <tr><td>Content integrity</td><td>2</td><td>Home shows the cross-checked figures (8+, 31, 8, 6) and contains no "NN% faster" style claims; both disciplines appear in the hero</td></tr>
+    <tr><td><b>Privacy guard</b></td><td>3</td><td>Only the 12 approved screenshots exist; every referenced image is approved; no filename suggests personal data; every plate project carries its explanation</td></tr>
+  </table>
+</section>
+
+<section id="build">
+  <h2>7. Build status</h2>
+  <table>
+    <tr><th>Command</th><th>Result</th></tr>
+    <tr><td><code>npm run build</code></td><td class="ok">Success — 3.39 MB server output (784 kB gzip)</td></tr>
+    <tr><td><code>npm run generate</code></td><td class="ok">Success — 40 routes prerendered in 0.7s, 2.3 MB static output in <code>.output/public</code></td></tr>
+    <tr><td>Console errors at runtime</td><td class="ok">None, on any route, in either theme</td></tr>
+    <tr><td>Deployment</td><td class="warn">Not performed. No domain purchased or configured, as instructed</td></tr>
+  </table>
+</section>
+
+<section id="shots">
+  <h2>8. Screenshots of the built site</h2>
+  <p>Captured from the generated output via Playwright, with lazy images forced to load and decode.</p>
+  <div class="pair">
+    <figure><img src="qa-shots/home-1366-light.jpg" alt="Home page, light theme, 1366px"><figcaption><b>Home · light</b><span>1366</span></figcaption></figure>
+    <figure><img src="qa-shots/home-1366-dark.jpg" alt="Home page, dark theme, 1366px"><figcaption><b>Home · dark</b><span>1366</span></figcaption></figure>
+  </div>
+  <div class="pair">
+    <figure><img src="qa-shots/projects-1366-light.jpg" alt="Projects listing, light"><figcaption><b>Projects · light</b><span>filters and 11 cards</span></figcaption></figure>
+    <figure><img src="qa-shots/projects-1366-dark.jpg" alt="Projects listing, dark"><figcaption><b>Projects · dark</b><span>1366</span></figcaption></figure>
+  </div>
+  <div class="pair">
+    <figure><img src="qa-shots/homefoody-1366-light.jpg" alt="HomeFoody case study with 12 screenshots"><figcaption><b>Case study with assets</b><span>12 approved screenshots</span></figcaption></figure>
+    <figure><img src="qa-shots/enservice-1366-dark.jpg" alt="EnServicePortal case study, dark, without screenshots"><figcaption><b>Case study without assets · dark</b><span>explicit callout, no fake imagery</span></figcaption></figure>
+  </div>
+  <div class="pair">
+    <figure><img src="qa-shots/about-1366-light.jpg" alt="About page"><figcaption><b>About</b><span>1366</span></figcaption></figure>
+    <figure><img src="qa-shots/experience-1366-dark.jpg" alt="Experience page, dark"><figcaption><b>Experience · dark</b><span>1366</span></figcaption></figure>
+  </div>
+  <div class="pair">
+    <figure><img src="qa-shots/skills-1366-light.jpg" alt="Skills page"><figcaption><b>Skills</b><span>1366</span></figcaption></figure>
+    <figure><img src="qa-shots/certifications-1366-dark.jpg" alt="Certifications page, dark"><figcaption><b>Certifications · dark</b><span>1366</span></figcaption></figure>
+  </div>
+  <div class="row3">
+    <figure class="phone"><img src="qa-shots/home-390-light.jpg" alt="Home at 390px, light"><figcaption><b>390 · light</b><span>mobile</span></figcaption></figure>
+    <figure class="phone"><img src="qa-shots/home-390-dark.jpg" alt="Home at 390px, dark"><figcaption><b>390 · dark</b><span>mobile</span></figcaption></figure>
+    <figure class="phone"><img src="qa-shots/projects-360-light.jpg" alt="Projects at 360px"><figcaption><b>360 · projects</b><span>smallest target</span></figcaption></figure>
+  </div>
+  <div class="pair">
+    <figure><img src="qa-shots/homefoody-768-light.jpg" alt="Case study at 768px"><figcaption><b>768 · tablet</b><span>gallery at 3 columns</span></figcaption></figure>
+    <figure><img src="qa-shots/home-1920-light.jpg" alt="Home at 1920px"><figcaption><b>1920 · desktop</b><span>container capped at 1200px</span></figcaption></figure>
+  </div>
+</section>
+
+<section id="assets">
+  <h2>9. Missing assets — the site works without them</h2>
+  <p>Each is wired to a single field in <code>content/site.json</code> or <code>certifications.json</code>. Set the value and the
+  control appears; until then nothing dead is shown.</p>
+  <table>
+    <tr><th>Asset</th><th>Where it goes</th><th>Effect today</th></tr>
+    <tr><td>Résumé PDF</td><td><code>public/files/</code> + <code>site.assets.resumePdf</code></td><td>Résumé button hidden everywhere; hero shows "View projects" instead. <b>Verified by test:</b> with a PDF supplied, the header button, its <code>download</code> attribute, a 200 response for the file and the contact-page link all appear — then the placeholder was removed and the field set back to <code>null</code></td></tr>
+    <tr><td>Certificate verification URLs ×2</td><td><code>certifications.json → verifyUrl</code></td><td>"Verify certificate" links not rendered</td></tr>
+    <tr><td>Personal GitHub URL</td><td><code>site.assets.githubUrl</code></td><td>GitHub row absent from contact; omitted from structured data</td></tr>
+    <tr><td>Social preview image</td><td><code>site.assets.ogImage</code></td><td>Open Graph falls back to summary card without an image</td></tr>
+    <tr><td>Profile photograph</td><td><code>site.assets.profilePhoto</code></td><td>About page is designed to work without one</td></tr>
+    <tr><td>Availability-calendar screenshot</td><td><code>public/images/projects/homefoody-suppliers/</code></td><td>The feature is described but not shown; add to the gallery and to the approved list in <code>tests/assets.spec.ts</code></td></tr>
+  </table>
+</section>
+
+<section id="outstanding">
+  <h2>10. Outstanding issues and decisions</h2>
+  <table>
+    <tr><th>#</th><th>Item</th><th>Needs</th></tr>
+    <tr><td>1</td><td><b>Domain</b> — canonical and Open Graph URLs currently use the placeholder <code>https://jyotijabare.example</code></td><td>Your domain, then <code>NUXT_PUBLIC_SITE_URL=https://… npm run generate</code></td></tr>
+    <tr><td>2</td><td><b>Deployment</b> — not performed, by instruction</td><td>Your approval and a host choice (any static host serves <code>.output/public</code>)</td></tr>
+    <tr><td>3</td><td>Screenshot sign-off — twelve images are published, all reviewed individually. The supplier dashboard shows blurred test-account names</td><td>A quick look, since you know the data better than I do</td></tr>
+    <tr><td>4</td><td>EnBuilder 2026 purchaser portal and ATM-OpenHouseApp have weaker evidence than the other four Flutter apps</td><td>Nothing blocking — flagged for honesty</td></tr>
+    <tr><td>5</td><td>Contact page has no form backend</td><td>Decide later: a form service, or leave the direct email route as-is (my recommendation — it keeps the site static and handles no personal data)</td></tr>
+  </table>
+  <div class="note"><p><b>Nothing has been deployed and no domain has been purchased or configured.</b>
+  The site is ready to generate against a real domain whenever you approve it.</p></div>
+</section>
+
+</div>
+<footer><div class="wrap"><p>Implementation &amp; QA report · Phase 4 · 25 November 2026 · <code>~/Documents/portfolio-site</code></p></div></footer>
+</body>
+</html>

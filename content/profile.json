@@ -1,0 +1,61 @@
+{
+  "headline": "Building scalable digital experiences across web, mobile & AI.",
+  "heroSummary": "Senior full-stack engineer, 8+ years. I build across the whole stack: eight Angular applications and Vue 3 / Nuxt 3 front ends on the web, six Flutter apps on mobile — two of them published consumer apps — and Node.js, Express and MongoDB behind both, with production OpenAI features in the last two years.",
+  "heroMeta": [
+    { "value": "8+ years", "label": "engineering" },
+    { "value": "31", "label": "repositories measured" }
+  ],
+  "specialisations": [
+    { "term": "Web", "detail": "Angular · Vue 3 · Nuxt 3 SSR · TypeScript · Ionic" },
+    { "term": "Mobile", "detail": "Flutter · Dart · offline-first · native Kotlin & Swift" },
+    { "term": "Backend", "detail": "Node.js · Express · MongoDB · REST · multi-tenancy" },
+    { "term": "AI", "detail": "OpenAI API · extraction · vision OCR · transcription" },
+    { "term": "Delivery", "detail": "CI/CD · release engineering · documented QA" }
+  ],
+  "highlights": [
+    { "value": "8+", "label": "Years engineering", "note": "Jun 2018 – Nov 2026" },
+    { "value": "31", "label": "Repositories contributed to", "note": "≈5,200 commits measured" },
+    { "value": "8", "label": "Angular applications", "note": "2020 – 2025" },
+    { "value": "6", "label": "Flutter apps", "note": "2 published to both stores" }
+  ],
+  "highlightsNote": "Every figure above is counted from git history. No estimated or percentage claims appear on this site.",
+  "about": [
+    {
+      "heading": "Web — Angular is my core framework",
+      "body": [
+        "Eight applications and roughly 2,400 commits between 2020 and 2025: EnBuilder, a builder sales and inventory platform where I authored about 80% of 2,075 commits; EnServicePortal, an offline-first construction defect app of ~22,300 lines where I wrote 170 of 179 commits; the EnBuilder purchaser portal, with canvas layout customisation and parking and locker allocation from live inventory; the EnCharity donor and admin portals; and the Shoplocally marketplace applications. Three ship as hybrid mobile apps through Ionic and Capacitor.",
+        "More recently, Vue 3 and Nuxt 3: a real-estate CRM where I hold ~61% of 616 commits, and a multi-tenant server-rendered website engine that serves every tenant site from one application."
+      ]
+    },
+    {
+      "heading": "Mobile — six Flutter apps",
+      "body": [
+        "A ~92,000-line CRM I created and authored — 182 of 189 Dart files, 20 feature modules, with native Kotlin and Swift over platform channels. Two published consumer apps for an Australian home-food marketplace as the sole mobile developer. A background-GPS mileage tracker with offline SQLite sync, an open-house kiosk, and a builder purchaser portal."
+      ]
+    },
+    {
+      "heading": "Backend and integrations throughout",
+      "body": [
+        "Node.js, Express and MongoDB microservices; Google Workspace OAuth with two-way Calendar, Tasks, Gmail and Contacts sync; Facebook and Instagram Graph publishing with long-lived token refresh; Stripe, PayPal and PayU payments; and Canadian anti-spam consent enforced at the data layer. Since 2024 I have shipped production AI features on the OpenAI API — structured extraction, vision OCR, document parsing and transcription workflows."
+      ]
+    },
+    {
+      "heading": "Leadership",
+      "body": [
+        "At NeoSoft Technologies I served as associate team lead for eight developers in 2021–2022, running sprint delivery, code review and technical risk assessment. Since then my leadership has been technical rather than managerial: primary author of ten repositories, author of the architecture and implementation guides my teams worked from, and owner of release and QA for the mobile products."
+      ]
+    }
+  ],
+  "howIWork": [
+    { "title": "Offline-first by instinct", "body": "PouchDB in Angular, Hive and SQLite in Flutter — local-write-first, idempotency keys, visible failure states." },
+    { "title": "Integrations are where products break", "body": "Token lifecycles, two-way sync and conflict-safe upserts get my attention before features do." },
+    { "title": "AI needs engineering around it", "body": "Structured output, duplicate detection, user confirmation before anything is written, and cancellable long-running requests." },
+    { "title": "Documented quality", "body": "A 36-case end-to-end QA report, a 48-finding audit and a 21-case device plan — all written by me, not generated." }
+  ],
+  "glance": [
+    { "term": "Based", "detail": "Navi Mumbai, India" },
+    { "term": "Available", "detail": "December 2026" },
+    { "term": "Experience", "detail": "8+ years" },
+    { "term": "Education", "detail": "B.Sc. Computer Science, 91%" }
+  ]
+}
