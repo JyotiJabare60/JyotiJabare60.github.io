@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - name: Configure Pages
@@ -37,10 +37,21 @@ jobs:
 
       - run: npm ci
 
+      - name: Show build environment
+        run: |
+          node -v && npm -v
+          echo "base_url=${{ steps.pages.outputs.base_url }}"
+          echo "base_path=${{ steps.pages.outputs.base_path }}"
+          echo "NUXT_APP_BASE_URL=$NUXT_APP_BASE_URL"
+
       - name: Generate static site
         env:
-          NUXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+          # falls back to the canonical URL if Pages has not reported one yet
+          NUXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url || 'https://jyotijabare60.github.io' }}
         run: npm run generate
+
+      - name: Confirm output exists
+        run: test -f .output/public/index.html && ls .output/public | head
 
       - uses: actions/upload-pages-artifact@v3
         with:
