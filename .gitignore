@@ -1,4 +1,5 @@
 .data/
+.deploy
 dist
 dist/
 .DS_Store

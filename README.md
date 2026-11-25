@@ -167,6 +167,35 @@ Tokens live in `assets/css/tokens.css`; dark mode is a designed set of values, n
 
 ---
 
+## Publishing updates — one command
+
+```bash
+npm run deploy
+```
+
+That builds the site with the right domain and pushes the result to the **`gh-pages`** branch,
+which GitHub Pages serves at **https://jyotijabare60.github.io**. You never need to check out or
+switch to `gh-pages` yourself — the script uses a temporary git worktree and cleans up after itself.
+
+Typical content change:
+
+```bash
+# edit content/*.json
+npm run generate && npm run test:e2e   # optional: check it locally first
+npm run deploy                          # publish
+git add -A && git commit -m "Update content" && git push   # keep the source on main
+```
+
+`main` holds the source; `gh-pages` holds the built output. They are separate on purpose.
+
+> One-time setting in the repo: **Settings → Pages → Source: Deploy from a branch → `gh-pages` / `(root)`**.
+
+### The GitHub Actions route (currently not working)
+
+`.github/workflows/deploy.yml` builds on every push to `main` and would remove the manual step, but
+its build fails on the runner while the identical build succeeds locally — unresolved, see the QA
+report. The workflow is left in place for when it is fixed; `npm run deploy` is the working path.
+
 ## Deploying to GitHub Pages (free, no domain needed)
 
 A workflow is already committed at `.github/workflows/deploy.yml`. It takes the site URL from your
