@@ -187,7 +187,7 @@ Pages settings, so nothing is hard-coded and it works whether the site lives at 
 
 Notes:
 - The free tier requires a **public** repository. The source is yours — no employer code is in it —
-  but the twelve approved screenshots become publicly visible, which is already their intended state.
+  and the four approved screenshots become publicly visible, which is their intended state.
 - For a project repo (`github.com/<username>/portfolio`) the site is served from `/portfolio/`.
   That works: `actions/configure-pages` sets `NUXT_APP_BASE_URL`, and every asset path goes through
   `useAssetUrl()` so images and downloads pick up the prefix. Verified in both shapes.

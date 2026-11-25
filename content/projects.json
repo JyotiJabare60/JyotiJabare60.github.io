@@ -378,91 +378,35 @@
       ],
       "gallery": [
         {
-          "src": "/images/projects/homefoody-suppliers/01-signin.jpg",
-          "alt": "HomeFoody supplier app sign-in screen with email field",
-          "caption": "Supplier sign-in — email OTP",
-          "w": 760,
-          "h": 1216
-        },
-        {
           "src": "/images/projects/homefoody-suppliers/02-dashboard-orders.jpg",
-          "alt": "Supplier dashboard showing availability toggle, order totals and a list of recent orders with status",
-          "caption": "Supplier dashboard — availability, totals, orders (names blurred)",
-          "w": 760,
-          "h": 1216
-        },
-        {
-          "src": "/images/projects/homefoody-suppliers/03-my-menu.jpg",
-          "alt": "Supplier menu list grouped by cuisine with prices",
-          "caption": "Menu grouped by cuisine",
-          "w": 760,
-          "h": 1216
-        },
-        {
-          "src": "/images/projects/homefoody-suppliers/04-promotions-list.jpg",
-          "alt": "List of supplier promotion campaigns with active status and date ranges",
-          "caption": "Promotion campaigns",
-          "w": 760,
-          "h": 1216
-        },
-        {
-          "src": "/images/projects/homefoody-suppliers/05-promotion-editor.jpg",
-          "alt": "Promotion editor showing title, start and end dates, minimum order and discount type",
-          "caption": "Promotion editor",
+          "alt": "HomeFoody supplier app dashboard showing availability toggle, order totals and recent orders",
+          "caption": "Supplier dashboard — availability, order totals (customer names blurred)",
           "w": 760,
           "h": 1216
         },
         {
           "src": "/images/projects/homefoody-suppliers/06-menu-item-editor.jpg",
           "alt": "Menu item editor showing price, food type, servings, cook time and ingredients",
-          "caption": "Menu item editor",
-          "w": 760,
-          "h": 1216
-        },
-        {
-          "src": "/images/projects/homefoody-customers/01-otp-signin.jpg",
-          "alt": "HomeFoody customer app sign-in screen",
-          "caption": "Customer sign-in — email OTP",
+          "caption": "Menu item editor — price, servings, cook time, ingredients",
           "w": 760,
           "h": 1216
         },
         {
           "src": "/images/projects/homefoody-customers/02-discovery-home.jpg",
           "alt": "Customer discovery screen with promotions carousel and nearby suppliers",
-          "caption": "Discovery — promotions and nearby suppliers",
+          "caption": "Customer discovery — promotions and nearby home cooks",
           "w": 760,
           "h": 1216
-        },
-        {
-          "src": "/images/projects/homefoody-customers/03-food-filters.jpg",
-          "alt": "Food listing with cuisine filters and sort controls",
-          "caption": "Food listing with filters and sorting",
-          "w": 760,
-          "h": 1216
-        },
-        {
-          "src": "/images/projects/homefoody-customers/04-dish-detail.jpg",
-          "alt": "Dish detail screen showing cook time, servings and ingredients",
-          "caption": "Dish detail",
-          "w": 760,
-          "h": 1013
         },
         {
           "src": "/images/projects/homefoody-customers/05-cart-grouped-by-supplier.jpg",
           "alt": "Cart screen with items grouped under two separate suppliers, each with its own promo code field",
-          "caption": "Cart grouped by supplier",
-          "w": 760,
-          "h": 1216
-        },
-        {
-          "src": "/images/projects/homefoody-customers/06-promotions.jpg",
-          "alt": "Promotions available to the buyer with discount codes",
-          "caption": "Buyer-facing promotions",
+          "caption": "Cart grouped by supplier — the problem a restaurant app never has",
           "w": 760,
           "h": 1216
         }
       ],
-      "galleryNote": "Captured from the released builds, August–September 2024. Published apps, shown with permission. Screens containing customer contact details were excluded, and the order list on the dashboard has its customer names blurred.",
+      "galleryNote": "A short selection from the released builds, August–September 2024 — two screens per app. Published apps, shown with permission. Screens containing customer contact details are not published, and the order list on the dashboard has its customer names blurred.",
       "outcomes": [
         "Both apps live on Google Play and the App Store under their own bundle identifiers.",
         "~36,200 lines delivered across the two apps in five months, as the only mobile developer.",

@@ -7,22 +7,15 @@ const projects = JSON.parse(readFileSync(join(process.cwd(), 'content/projects.j
 }
 
 /**
- * Privacy guard. Only screenshots that have been individually reviewed may ship.
+ * Privacy guard. Only screenshots that have been individually reviewed may ship, and the
+ * published set is deliberately small: two screens per app.
  * The Customers List, Edit Profile and order-detail screens were excluded because they
  * contain real names, addresses and phone numbers — this test keeps them out.
  */
 const APPROVED = [
-  'homefoody-customers/01-otp-signin.jpg',
   'homefoody-customers/02-discovery-home.jpg',
-  'homefoody-customers/03-food-filters.jpg',
-  'homefoody-customers/04-dish-detail.jpg',
   'homefoody-customers/05-cart-grouped-by-supplier.jpg',
-  'homefoody-customers/06-promotions.jpg',
-  'homefoody-suppliers/01-signin.jpg',
   'homefoody-suppliers/02-dashboard-orders.jpg',
-  'homefoody-suppliers/03-my-menu.jpg',
-  'homefoody-suppliers/04-promotions-list.jpg',
-  'homefoody-suppliers/05-promotion-editor.jpg',
   'homefoody-suppliers/06-menu-item-editor.jpg',
 ]
 const FORBIDDEN = /customers-list|customer-list|edit-profile|order-detail|profile/i

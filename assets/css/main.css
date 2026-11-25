@@ -221,6 +221,8 @@ a.card, .card-link { text-decoration: none; display: block; color: inherit; }
 .gallery { display: grid; gap: var(--s4); grid-template-columns: repeat(2, 1fr); }
 @media (min-width: 700px)  { .gallery { grid-template-columns: repeat(3, 1fr); } }
 @media (min-width: 1100px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+/* a short selection reads as deliberate in two columns rather than an orphaned third row */
+@media (min-width: 700px) { .gallery--compact { grid-template-columns: repeat(2, 1fr); max-width: 680px; } }
 .gallery figure { margin: 0; }
 .gallery img { width: 100%; height: auto; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface-2); }
 .gallery figcaption { margin-top: var(--s2); font-family: var(--font-mono); font-size: var(--fs-xs); color: var(--ink-faint); }

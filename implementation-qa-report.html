@@ -145,10 +145,10 @@ footer p{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fai
   <ul>
     <li><b>Theme management</b> — light, dark and system, system as default, persisted in <code>localStorage</code>, applied by an inline <code>&lt;head&gt;</code> script before first paint so there is no flash. Verified by test, including across navigation and reload.</li>
     <li><b>Project filtering</b> — reactive category filter with <code>aria-pressed</code> state and a screen-reader live region announcing the result count.</li>
-    <li><b>Two case-study states</b> — projects with approved screenshots get a responsive 12-image gallery with captions and intrinsic dimensions; the other ten get the designed specification plate plus an explicit statement that nothing is published. No fabricated app imagery anywhere.</li>
+    <li><b>Two case-study states</b> — projects with approved screenshots get a responsive gallery (four screens, two per app) with captions and intrinsic dimensions; the other ten get the designed specification plate plus an explicit statement that nothing is published. No fabricated app imagery anywhere.</li>
     <li><b>Conditional assets</b> — the résumé button, certificate verification links and GitHub link render only when their path is set in <code>content/site.json</code>. Today they are <code>null</code>, so the site shows no dead controls.</li>
     <li><b>SEO</b> — per-page title, description, canonical and Open Graph; <code>Person</code> structured data on the home page; generated sitemap and robots; semantic landmarks and a skip link.</li>
-    <li><b>Performance</b> — fully prerendered, lazy-loaded images with width/height to prevent layout shift, and screenshots served at 760px (40–140 KB) instead of the 2.6–4.6 MB originals.</li>
+    <li><b>Performance</b> — fully prerendered, lazy-loaded images with width/height to prevent layout shift, and screenshots served at 760px (40–140 KB) instead of the 2.6–4.6 MB originals, and only four are published at all.</li>
     <li><b>Accessibility</b> — approved AA palette, visible focus rings, descriptive alt text on every image, reduced-motion support.</li>
   </ul>
 </section>
@@ -158,7 +158,7 @@ footer p{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fai
   <p>All five were found by running the suite or by inspecting rendered output — none were reported as passing before they were fixed.</p>
   <table>
     <tr><th>#</th><th>Defect</th><th>Resolution</th></tr>
-    <tr><td class="bad">1</td><td><b>A published screenshot contained personal data.</b> <code>04-edit-menu-item.jpg</code> was in fact the <b>Customers List</b> screen — six names, addresses and phone numbers, including Jyoti's own. My Phase 3 mapping of the source captures was wrong, and three supplier captions were attached to the wrong screens.</td><td>Image deleted from the site and from the approved assets folder. All four supplier screens re-staged from individually verified sources, captions corrected, and a <b>Playwright privacy guard</b> added that fails if any file outside the approved list appears under <code>public/images/projects</code></td></tr>
+    <tr><td class="bad">1</td><td><b>A published screenshot contained personal data.</b> <code>04-edit-menu-item.jpg</code> was in fact the <b>Customers List</b> screen — six names, addresses and phone numbers, including Jyoti's own. My Phase 3 mapping of the source captures was wrong, and three supplier captions were attached to the wrong screens.</td><td>Image deleted from the site and from the approved assets folder. All four supplier screens re-staged from individually verified sources, captions corrected, and a <b>Playwright privacy guard</b> added that fails if any file outside the approved list appears under <code>public/images/projects</code>. The published set was then cut to <b>four screenshots, two per app</b>, at your request</td></tr>
     <tr><td class="warn">2</td><td>The supplier dashboard screenshot showed test-account customer names in the order list</td><td>Names and dates blurred; KPI tiles, statuses and totals kept. Noted in the gallery caption</td></tr>
     <tr><td class="warn">3</td><td><code>/favicon.ico</code> returned 404 on every page — caught by the "no console errors" assertion</td><td>Brand mark created (teal monogram with the accent dot) as <code>favicon.ico</code>, <code>apple-touch-icon.png</code> and <code>icon-512.png</code>; links added to the document head</td></tr>
     <tr><td class="warn">4</td><td>Adding intrinsic <code>width</code>/<code>height</code> to gallery images broke their layout — 1,216px-tall empty boxes, because the CSS had no <code>height: auto</code></td><td>Rule corrected in the site stylesheet and back-ported to the Phase 3 design source so the two stay identical</td></tr>
@@ -175,13 +175,13 @@ footer p{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fai
     <tr><td>Routes</td><td>19</td><td>Every route returns &lt;400, renders exactly one non-empty <code>h1</code>, has a title, and logs <b>zero console errors</b>; unknown routes render the 404 page</td></tr>
     <tr><td>Navigation</td><td>3</td><td>Header links reach every section, the mobile panel opens and navigates, project cards open the matching case study</td></tr>
     <tr><td>Filters</td><td>2</td><td>Counts match rendered cards for all / full-stack 7 / Flutter 3 / AI 3, pressed state is correct, result count is announced</td></tr>
-    <tr><td>Case-study states</td><td>3</td><td>12 gallery images load after scroll with descriptive alts and declared dimensions; the no-assets project shows the callout and no gallery; plates are labelled</td></tr>
+    <tr><td>Case-study states</td><td>3</td><td>4 gallery images load after scroll with descriptive alts and declared dimensions; the no-assets project shows the callout and no gallery; plates are labelled</td></tr>
     <tr><td>Theme</td><td>3</td><td>Switching, persistence across reload and navigation, no flash before paint, and both themes render key pages without console errors</td></tr>
     <tr><td>Responsive</td><td>6</td><td>No horizontal overflow at 360, 390, 768, 1366 and 1920 across five routes; navigation swaps between mobile and desktop</td></tr>
     <tr><td>Assets &amp; links</td><td>4</td><td>No dead résumé button, no invented verification links, external links carry <code>target</code> and <code>rel="noopener"</code>, every image has a real alt</td></tr>
     <tr><td>SEO</td><td>4</td><td>Unique title, description and canonical per page; Open Graph tags; <code>Person</code> JSON-LD; sitemap with 18 URLs and robots; semantic landmarks</td></tr>
     <tr><td>Content integrity</td><td>2</td><td>Home shows the cross-checked figures (8+, 31, 8, 6) and contains no "NN% faster" style claims; both disciplines appear in the hero</td></tr>
-    <tr><td><b>Privacy guard</b></td><td>3</td><td>Only the 12 approved screenshots exist; every referenced image is approved; no filename suggests personal data; every plate project carries its explanation</td></tr>
+    <tr><td><b>Privacy guard</b></td><td>3</td><td>Only the 4 approved screenshots exist; every referenced image is approved; no filename suggests personal data; every plate project carries its explanation</td></tr>
   </table>
 </section>
 
@@ -208,7 +208,7 @@ footer p{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fai
     <figure><img src="qa-shots/projects-1366-dark.jpg" alt="Projects listing, dark"><figcaption><b>Projects · dark</b><span>1366</span></figcaption></figure>
   </div>
   <div class="pair">
-    <figure><img src="qa-shots/homefoody-1366-light.jpg" alt="HomeFoody case study with 12 screenshots"><figcaption><b>Case study with assets</b><span>12 approved screenshots</span></figcaption></figure>
+    <figure><img src="qa-shots/homefoody-1366-light.jpg" alt="HomeFoody case study with 12 screenshots"><figcaption><b>Case study with assets</b><span>4 approved screenshots</span></figcaption></figure>
     <figure><img src="qa-shots/enservice-1366-dark.jpg" alt="EnServicePortal case study, dark, without screenshots"><figcaption><b>Case study without assets · dark</b><span>explicit callout, no fake imagery</span></figcaption></figure>
   </div>
   <div class="pair">
@@ -251,7 +251,7 @@ footer p{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fai
     <tr><th>#</th><th>Item</th><th>Needs</th></tr>
     <tr><td>1</td><td><b>Domain</b> — canonical and Open Graph URLs currently use the placeholder <code>https://jyotijabare.example</code></td><td>Your domain, then <code>NUXT_PUBLIC_SITE_URL=https://… npm run generate</code></td></tr>
     <tr><td>2</td><td><b>Deployment</b> — not performed, by instruction</td><td>Your approval and a host choice (any static host serves <code>.output/public</code>)</td></tr>
-    <tr><td>3</td><td>Screenshot sign-off — twelve images are published, all reviewed individually. The supplier dashboard shows blurred test-account names</td><td>A quick look, since you know the data better than I do</td></tr>
+    <tr><td>3</td><td>Screenshot sign-off — four images are published (two per app), all reviewed individually. The supplier dashboard shows blurred test-account names</td><td>A quick look, since you know the data better than I do</td></tr>
     <tr><td>4</td><td>EnBuilder 2026 purchaser portal and ATM-OpenHouseApp have weaker evidence than the other four Flutter apps</td><td>Nothing blocking — flagged for honesty</td></tr>
     <tr><td>5</td><td>Contact page has no form backend</td><td>Decide later: a form service, or leave the direct email route as-is (my recommendation — it keeps the site static and handles no personal data)</td></tr>
   </table>

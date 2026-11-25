@@ -96,7 +96,7 @@ test.describe('case study states', () => {
   test('project with approved screenshots shows a gallery', async ({ page }) => {
     await page.goto('/projects/homefoody')
     const figures = page.locator('.gallery figure')
-    await expect(figures).toHaveCount(12)
+    await expect(figures).toHaveCount(4)
     for (const img of await page.locator('.gallery img').all()) {
       await expect(img).toHaveAttribute('alt', /.{10,}/)
     }
